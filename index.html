@@ -92,18 +92,18 @@ th{color:var(--mute);font-weight:600;font-size:.7rem}
 <body>
 <header class="mast">
   <p class="mast-title">币安被盗 · 链上流转航线</p>
-  <p class="mast-meta">核验快照 <b id="snapLabel">2026-10-31 22:44 Asia/Shanghai</b> · 归集阶段</p>
+  <p class="mast-meta">核验快照 <b id="snapLabel">2026-11-01 07:44 Asia/Hong_Kong</b> · 归集阶段</p>
 </header>
 
 <div class="shell">
-  <p class="lede">锚点 <code>0x5227…2f8c</code>。官方 Update #3 / Recovery Update #3：覆盖约 90%（十币称 100% backed）；影响约 $63 亿（约数≠净损失）；公司认赔不转嫁用户，已拨备 &gt;$63.4 亿；链上冻结约 $30 亿（冻结≠追回≠已赔付）。hub ETH 近空，稳定币仍拉黑在位。下图只画自核大额航线，颜色=手法。</p>
+  <p class="lede">锚点 <code>0x5227…2f8c</code>。官方 Update #3 / Recovery Update #3：覆盖约 90%（十币称 100% backed）；影响约 $63 亿（约数≠净损失）；公司认赔不转嫁用户，已拨备 &gt;$63.4 亿；链上冻结约 $30 亿（冻结≠追回≠已赔付）。hub ETH 近空，稳定币仍拉黑在位；过夜 ETH 已归集新址 0x8d4b…。下图只画自核大额航线，颜色=手法。</p>
 
   <div class="kpi-strip">
     <div class="kpi-pill"><span class="lab">官方影响</span><span class="val">约 $63 亿</span></div>
     <div class="kpi-pill"><span class="lab">官方冻结</span><span class="val">约 $30 亿 · 冻结≠追回</span></div>
     <div class="kpi-pill"><span class="lab">官方拨备</span><span class="val">&gt;$63.4 亿 · 认赔≠追回</span></div>
     <div class="kpi-pill warn"><span class="lab">Hub ETH</span><span class="val">≈0</span></div>
-    <div class="kpi-pill hot"><span class="lab">新暂存+归集</span><span class="val">c209≈7003 · 活跃砸盘 FUN</span></div>
+    <div class="kpi-pill hot"><span class="lab">新暂存+归集</span><span class="val">新归集 0x8d4b≈9788 · FUN已清</span></div>
     <div class="kpi-pill"><span class="lab">Park8 / Park19</span><span class="val">197k / 138k idle</span></div>
     <div class="kpi-pill"><span class="lab">BTC peel</span><span class="val">18,270.2 已花完</span></div>
   </div>
@@ -117,7 +117,7 @@ th{color:var(--mute);font-weight:600;font-size:.7rem}
       <div class="rail-step"><div class="n">2</div><div><p class="t">多链普通自签</p><p class="d">B16 / BTC / Tron 热钱包并行转出。</p></div></div>
       <div class="rail-step"><div class="n">3</div><div><p class="t">Hub 拉黑仍换币</p><p class="d">USDT~11.75亿 + USDC 8.23亿仍黑名单（只管对应稳定币；其它币仍可出站）；曾抛 UNI/ENA 等。</p></div></div>
       <div class="rail-step"><div class="n">4</div><div><p class="t">拆分 · 停放 · 剥离</p><p class="d">USDT 拆出；Park8/19 停 ETH；BTC 千枚捆。</p></div></div>
-      <div class="rail-step"><div class="n">5</div><div><p class="t">归集阶段（新）</p><p class="d">Hub ETH≈0；C209≈7003；Park8/19·stage·consol 仍大额闲置；FUN 续砸。</p></div></div>
+      <div class="rail-step"><div class="n">5</div><div><p class="t">归集阶段（新）</p><p class="d">Hub ETH≈0；C209≈7003；新归集 0x8d4b≈9788；FUN已清。</p></div></div>
     </aside>
 
     <div>
@@ -187,7 +187,7 @@ const NODES = [
   { id: "binance14", label: "币安14", layer: "binance", chain: "ETH", note: "Etherscan 标注 Binance 14；EIP-7702 扫出主池资产", tag: "币安", venue: "币安" },
   { id: "btc_hot", label: "币安BTC热钱包", layer: "binance", chain: "BTC", note: "币安 BTC 热钱包 → 主接收", tag: "币安", venue: "币安" },
   { id: "tron_hot", label: "币安波场热钱包", layer: "binance", chain: "TRON", note: "Tronscan Binance-Hot 7；扫出 USDT/TRX", tag: "币安", venue: "币安" },
-  { id: "hub", label: "黑客主枢纽", layer: "l0", chain: "ETH", note: "0x5227…2f8c；nonce 729；余 ETH 已扫→0x1186…4084；五仓 ETH 已归集→0xc209…850a（≈2816；该址另有更早 3000）；NIL≈861 未扫；FUN 砸中；ZKP·LSK·INNBC；USDT/USDC 黑名单≠整地址冻结；DAR/CTSI/PROM 已全卖", value: "ETH≈0", frozen: true, tag: "黑客", venue: "黑客中转", addr: "0x5227f603C1eE34CE3C06eFe6477003BDfCCB2f8c" },
+  { id: "hub", label: "黑客主枢纽", layer: "l0", chain: "ETH", note: "0x5227…2f8c；nonce 729；余 ETH 已扫→0x1186…4084；五仓 ETH 已归集→0xc209…850a（≈2816；该址另有更早 3000）；NIL/FUN/ZKP/LSK ETH 已扫→0x8d4b…；INNBC；USDT/USDC 黑名单≠整地址冻结；DAR/CTSI/PROM 已全卖", value: "ETH≈0", frozen: true, tag: "黑客", venue: "黑客中转", addr: "0x5227f603C1eE34CE3C06eFe6477003BDfCCB2f8c" },
   { id: "btc_recv", label: "BTC主接收", layer: "l0", chain: "BTC", note: "funded=spent 18,270.2 BTC；同块千枚剥离后已花完", value: "18,270.2 已花", tag: "黑客", venue: "黑客中转" },
   { id: "tron_recv", label: "波场主接收", layer: "l0", chain: "TRON", note: "黑客波场主接收；部分 USDT 进冻结路径", value: "约 $3.13 亿", frozen: true, tag: "黑客", venue: "黑客中转" },
   { id: "split_usdt", label: "USDT分流A+B", layer: "l1", chain: "ETH", note: "合并 Exploiter 18+10：共接约 7 亿 USDT；含 1.75 亿冻结与约 1.9 亿 Aave 抵押（Aave 未上图）", value: "$7.00 亿", tag: "黑客", venue: "黑客中转" },
@@ -200,14 +200,15 @@ const NODES = [
   { id: "stargate_in", label: "Stargate入金", layer: "l2", chain: "ETH", note: "StargatePoolNative；8笔→park2≈1182.54（先验≈954+新≈228.42，链上已核验）；非 hub 直转；源链未闭合【技术推断】", value: "≈1182.54 ETH", tag: "跨链", venue: "桥/路由", addr: "0x77b2043768d28e9c9ab44e1abfc95944bce57931" },
   { id: "eth_consol", label: "ETH归集·跳板", layer: "l2", chain: "ETH", note: "0x79e70d13…；LINK/WBTC/PEPE/swap 跳板汇入 ~34,279.7 ETH；nonce 0", value: "34,280 ETH", tag: "归集", venue: "黑客归集", addr: "0x79e70d139fc05aa75f75611fdf2680e9952b544a" },
   { id: "eth_consol_c209", label: "ETH归集·C209", layer: "l2", chain: "ETH", note: "nonce 0；分层：五仓扫入≈2816 + 更早≈3000（0xa97b…）+ park2 扫仓≈1186.83（链上已核验）", value: "≈7002.79 ETH", tag: "归集", venue: "黑客归集", addr: "0xc2096a12ebe0944f4d39e59979f485afd92d850a" },
+  { id: "eth_consol_8d4b", label: "ETH归集·8d4b", layer: "l2", chain: "ETH", note: "nonce 0；过夜自多仓扫入（fun≈231 / nil≈861 / lsk≈1018 / zkp≈167 + 未标名停车场）；未再转出", value: "≈9788 ETH", tag: "归集", venue: "黑客归集", addr: "0x8d4b8EE62124B7ee140A51dDd07390A56F1c9E19" },
   { id: "zama_park", label: "ZAMA停放·新址", layer: "l2", chain: "ETH", note: "nonce 23；ETH 已扫→0xc209…850a", value: "ETH≈0（已扫出）", cleared: true, tag: "停放", venue: "黑客停放", addr: "0x73ee90554fd0954490b072ca11e6422642ab4593" },
   { id: "soph_park", label: "SOPH停放·新址", layer: "l2", chain: "ETH", note: "nonce 7；ETH 已扫→0xc209…850a", value: "ETH≈0（已扫出）", cleared: true, tag: "停放", venue: "黑客停放", addr: "0xa3E1A5b5eC04907932101962a2fbEC614B1Cbb04" },
-  { id: "nil_park", label: "NIL停放·新址", layer: "l2", chain: "ETH", note: "nonce 10；NIL 已全部换 ETH，ETH 仍停本仓", value: "≈861 ETH（NIL=0）", tag: "停放", venue: "黑客停放", addr: "0xc58623b61dfb8E3E583B43613bF2C1C025fde935" },
+  { id: "nil_park", label: "NIL停放·新址", layer: "l2", chain: "ETH", note: "nonce 11；ETH≈0（已扫出）→0x8d4b… ≈861", value: "ETH≈0（已扫出）", cleared: true, tag: "停放", venue: "黑客停放", addr: "0xc58623b61dfb8E3E583B43613bF2C1C025fde935" },
   { id: "blur_park", label: "BLUR停放·新址", layer: "l2", chain: "ETH", note: "nonce 6；ETH 已扫→0xc209…850a", value: "ETH≈0（已扫出）", cleared: true, tag: "停放", venue: "黑客停放", addr: "0x4271B78E7eFe2669482ED4E3312bb7f2d2bfB8AF" },
   { id: "re_park", label: "RE停放·新址", layer: "l2", chain: "ETH", note: "nonce 13；ETH 已扫→0xc209…850a", value: "ETH≈0（已扫出）", cleared: true, tag: "停放", venue: "黑客停放", addr: "0x7B12eA0960D92349a8FD2d07757C354dF166837a" },
-  { id: "fun_park", label: "FUN停放·新址", layer: "l2", chain: "ETH", note: "nonce 64；续砸 V2+V3；ETH 仍停本仓未扫入 c209", value: "≈5.15亿 FUN+28.31 ETH", tag: "停放", venue: "黑客停放", addr: "0xFB34f34A0A395Afb3D5094816Aa235483f0C2095" },
-  { id: "zkp_park", label: "ZKP停放·新址", layer: "l2", chain: "ETH", note: "nonce 2；已开砸 ZKP→ETH，ETH 仍停本仓", value: "≈921万 ZKP+11 ETH", tag: "停放", venue: "黑客停放", addr: "0x09c9BDb15c8CE62CC875DE32F6A48A419E389dd6" },
-  { id: "lsk_park", label: "LSK停放·新址", layer: "l2", chain: "ETH", note: "nonce 0；hub 迁入 +0.05 ETH；尚未开卖", value: "≈926万 LSK", tag: "停放", venue: "黑客停放", addr: "0x2274F5057f331d4939492b03F3c0001B27fB64b0" },
+  { id: "fun_park", label: "FUN停放·新址", layer: "l2", chain: "ETH", note: "nonce 108；FUN 砸完；ETH 扫入新归集 0x8d4b…（未进 c209）", value: "ETH≈0（已扫出）", cleared: true, tag: "停放", venue: "黑客停放", addr: "0xFB34f34A0A395Afb3D5094816Aa235483f0C2095" },
+  { id: "zkp_park", label: "ZKP停放·新址", layer: "l2", chain: "ETH", note: "nonce 3；ZKP 砸完；ETH 扫入 0x8d4b… ≈167", value: "ETH≈0（已扫出）", cleared: true, tag: "停放", venue: "黑客停放", addr: "0x09c9BDb15c8CE62CC875DE32F6A48A419E389dd6" },
+  { id: "lsk_park", label: "LSK停放·新址", layer: "l2", chain: "ETH", note: "nonce 13；LSK 砸完；ETH 扫入 0x8d4b… ≈1018", value: "ETH≈0（已扫出）", cleared: true, tag: "停放", venue: "黑客停放", addr: "0x2274F5057f331d4939492b03F3c0001B27fB64b0" },
   { id: "innbc_park", label: "INNBC停放·新址", layer: "l2", chain: "ETH", note: "nonce 0；hub 迁入 +0.05 ETH；尚未开卖", value: "≈2.51×10¹⁴ INNBC", tag: "停放", venue: "黑客停放", addr: "0x2c1396D6b0803E0B55b23F877FcF57F4F77171A2" },
   { id: "robo_park", label: "ROBO停放·新址", layer: "l2", chain: "ETH", note: "nonce 6；ETH 已扫→0xc209…850a", value: "ETH≈0（已扫出）", cleared: true, tag: "停放", venue: "黑客停放", addr: "0x76044cf6afb2d8e85719ad35e2d1c95473bf9f89" },
   { id: "usdt_frozen_aa24", label: "USDT冻结1.75亿", layer: "out", chain: "ETH", note: "Exploiter 21；约 1.75 亿 USDT 黑名单停放（≠已追回）", value: "$1.75 亿", frozen: true, tag: "冻结", venue: "USDT黑名单" },
@@ -251,6 +252,10 @@ const EDGES = [
   { from: "blur_park", to: "eth_consol_c209", usd: 0, label: "≈153 ETH", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
   { from: "robo_park", to: "eth_consol_c209", usd: 0, label: "≈157 ETH", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
   { from: "eth_park2", to: "eth_consol_c209", usd: 0, label: "≈1186.83 ETH", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
+  { from: "fun_park", to: "eth_consol_8d4b", usd: 0, label: "≈231 ETH 扫仓", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
+  { from: "nil_park", to: "eth_consol_8d4b", usd: 0, label: "≈861 ETH 扫仓", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
+  { from: "lsk_park", to: "eth_consol_8d4b", usd: 0, label: "≈1018 ETH 扫仓", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
+  { from: "zkp_park", to: "eth_consol_8d4b", usd: 0, label: "≈167 ETH 扫仓", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
 ];
 const LAYERS = [
   { key: "binance", title: "币安钱包", story: "7702 扫空 + 多链自签" },

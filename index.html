@@ -96,12 +96,12 @@ th{color:var(--mute);font-weight:600;font-size:.7rem}
 </header>
 
 <div class="shell">
-  <p class="lede">锚点 <code>0x5227…2f8c</code>。官方 <a href="https://www.binance.com/en/support/announcement/detail/73911fb819b240f88b88256bdd318eda">Update #4 / Recovery Update #4</a>（仍为最新，无 #5）：覆盖约 95%（十币称 100% backed）；2026-11-01 14:00–17:00（香港）已开第一阶段提现（分阶段推进中，以提现页/<a href="https://www.binance.com/en/network">网络状态</a>为准）；影响约 $63 亿（约数≠净损失）；公司认赔不转嫁用户，已拨备 >$63.4 亿；链上冻结约 $30 亿（冻结≠追回≠已赔付）。本快照链上数据仍为 11-01 12:42（无实时扫）；hub ETH 近空，稳定币仍拉黑在位；过夜 ETH 已归集新址 0x8d4b…。下图只画自核大额航线，颜色=手法。</p>
+  <p class="lede">锚点 <code>0x5227…2f8c</code>。官方 <a href="https://www.binance.com/en/support/announcement/detail/73911fb819b240f88b88256bdd318eda">Update #4 / Recovery Update #4</a>（仍为最新，无 #5）：覆盖约 95%（十币称 100% backed）；2026-11-01 14:00–17:00（香港）已开第一阶段提现（分阶段，以提现页/<a href="https://www.binance.com/en/network">网络状态</a>为准）；影响约 $63 亿（约数≠净损失）；公司认赔不转嫁用户，已拨备 &gt;$63.4 亿；链上冻结约 $30 亿（冻结≠追回≠已赔付）。本快照链上数据仍为 11-01 12:42（无实时扫）；hub ETH 近空，稳定币仍拉黑在位；过夜 ETH 已归集新址 0x8d4b…。下图只画自核大额航线，颜色=手法。</p>
 
   <div class="kpi-strip">
     <div class="kpi-pill"><span class="lab">官方影响</span><span class="val">约 $63 亿</span></div>
     <div class="kpi-pill"><span class="lab">官方冻结</span><span class="val">约 $30 亿 · 冻结≠追回</span></div>
-    <div class="kpi-pill"><span class="lab">官方拨备</span><span class="val">>$63.4 亿 · 认赔≠追回</span></div>
+    <div class="kpi-pill"><span class="lab">官方拨备</span><span class="val">&gt;$63.4 亿 · 认赔≠追回</span></div>
     <div class="kpi-pill warn"><span class="lab">Hub ETH</span><span class="val">≈0</span></div>
     <div class="kpi-pill hot"><span class="lab">新暂存+归集</span><span class="val">新归集 0x8d4b≈9788 · FUN已清</span></div>
     <div class="kpi-pill"><span class="lab">Park8 / Park19</span><span class="val">197k / 138k idle</span></div>
@@ -208,26 +208,318 @@ const NODES = [
   { id: "re_park", label: "RE停放·新址", layer: "l2", chain: "ETH", note: "nonce 13；ETH 已扫→0xc209…850a", value: "ETH≈0（已扫出）", cleared: true, tag: "停放", venue: "黑客停放", addr: "0x7B12eA0960D92349a8FD2d07757C354dF166837a" },
   { id: "fun_park", label: "FUN停放·新址", layer: "l2", chain: "ETH", note: "nonce 108；FUN 砸完；ETH 扫入新归集 0x8d4b…（未进 c209）", value: "ETH≈0（已扫出）", cleared: true, tag: "停放", venue: "黑客停放", addr: "0xFB34f34A0A395Afb3D5094816Aa235483f0C2095" },
   { id: "zkp_park", label: "ZKP停放·新址", layer: "l2", chain: "ETH", note: "nonce 3；ZKP 砸完；ETH 扫入 0x8d4b… ≈167", value: "ETH≈0（已扫出）", cleared: true, tag: "停放", venue: "黑客停放", addr: "0x09c9BDb15c8CE62CC875DE32F6A48A419E389dd6" },
-  { id: "lsk_park", label: "LSK停放·新址", layer: "l2", chain: "ETH", note: "nonce 13；LSK 砸完；ETH 扫入 0x8d4b… ≈1018", value: "ETH≈0（已扫出）", cleared: true, tag: "停放", venue: "黑客停放", addr: "0x4e7c5b5b5e5b5e5b5e5b5e5b5e5b5e5b5e5b5e5b" }
+  { id: "lsk_park", label: "LSK停放·新址", layer: "l2", chain: "ETH", note: "nonce 13；LSK 砸完；ETH 扫入 0x8d4b… ≈1018", value: "ETH≈0（已扫出）", cleared: true, tag: "停放", venue: "黑客停放", addr: "0x2274F5057f331d4939492b03F3c0001B27fB64b0" },
+  { id: "innbc_park", label: "INNBC停放·新址", layer: "l2", chain: "ETH", note: "nonce 0；hub 迁入 +0.05 ETH；尚未开卖", value: "≈2.51×10¹⁴ INNBC", tag: "停放", venue: "黑客停放", addr: "0x2c1396D6b0803E0B55b23F877FcF57F4F77171A2" },
+  { id: "robo_park", label: "ROBO停放·新址", layer: "l2", chain: "ETH", note: "nonce 6；ETH 已扫→0xc209…850a", value: "ETH≈0（已扫出）", cleared: true, tag: "停放", venue: "黑客停放", addr: "0x76044cf6afb2d8e85719ad35e2d1c95473bf9f89" },
+  { id: "usdt_frozen_aa24", label: "USDT冻结1.75亿", layer: "out", chain: "ETH", note: "Exploiter 21；约 1.75 亿 USDT 黑名单停放（≠已追回）", value: "$1.75 亿", frozen: true, tag: "冻结", venue: "USDT黑名单" },
+  { id: "tron_tcz", label: "波场USDT冻结", layer: "out", chain: "TRON", note: "波场 USDT 冻结路径（黑名单停放≠已追回）；无 CEX 标签", frozen: true, tag: "冻结", venue: "USDT黑名单" },
 ];
-// Note: full nodes and edges truncated in this paste for brevity in tool call; the actual file has complete data. This is a simplified update for status only. The full version is in local /tmp/index.html.
-const EDGES = []; // placeholder for full edges in real file
+const OFFMAP = [
+  "币安16 / 热钱包34",
+  "ENA·wBETH / RLUSD / UNI·ONDO",
+  "Aave抵押位",
+  "波场USDT中转",
+];
+const EDGES = [
+  { from: "binance14", to: "hub", usd: 2334765674, label: "16.7 万 ETH + 16.15 亿 USDT + 49 币", t: "04:24", src: "self", kind: "binance", badge: "7702" },
+  { from: "btc_hot", to: "btc_recv", usd: 1434210700, label: "18,270.2 BTC", t: "04:20", src: "self", kind: "attacker", badge: "自签" },
+  { from: "btc_recv", to: "btc_peel_bucket", usd: 1434210700, label: "同块拆成 1000 BTC 捆", t: "04:20", src: "self", kind: "attacker", badge: "剥离" },
+  { from: "tron_hot", to: "tron_recv", usd: 612729468, label: "6.13 亿 USDT + TRX", t: "04:22", src: "self", kind: "attacker", badge: "自签" },
+  { from: "hub", to: "split_usdt", usd: 700000000, label: "7 亿 USDT（A 5亿 + B 2亿）", t: "04:30", src: "self", kind: "attacker", badge: "拆分" },
+  { from: "hub", to: "park8", usd: 441739600, label: "195,460+2,000 ETH", t: "04:38", src: "self", kind: "attacker", badge: "停放" },
+  { from: "binance14", to: "hub", usd: 201233972, label: "再扫约 2 亿 USDT（已冻）", t: "05:44", src: "self", kind: "frozen", badge: "冻结" },
+  { from: "split_usdt", to: "usdt_frozen_aa24", usd: 175000000, label: "1.75 亿 USDT 拉黑", t: "05:08", src: "etherscan", kind: "frozen", badge: "冻结" },
+  { from: "hop_feed", to: "eth_consol", usd: 77500000, label: "~34,280 ETH 跳板归集", t: "13:27", src: "self", kind: "attacker", badge: "归集" },
+  { from: "tron_recv", to: "tron_tcz", usd: 65990000, label: "6599 万 USDT 冻结路径", t: "05:00", src: "panews", kind: "frozen", badge: "冻结" },
+  { from: "hub", to: "eth_stage", usd: 39000000, label: "0.1+17,260 ETH → 暂存", t: "13:15", src: "self", kind: "attacker", badge: "暂存" },
+  { from: "hub", to: "eth_park2", usd: 0, label: "≈4.29 ETH 扫余", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
+  { from: "stargate_in", to: "eth_park2", usd: 0, label: "≈1182.54 ETH（8笔）", t: "跨链", src: "self", kind: "attacker", badge: "跨链" },
+  { from: "hub", to: "zama_park", usd: 0, label: "≈5330万 ZAMA + 0.05 ETH", t: "迁仓", src: "self", kind: "attacker", badge: "迁仓" },
+  { from: "hub", to: "soph_park", usd: 0, label: "≈16.9亿 SOPH + 0.05 ETH", t: "迁仓", src: "self", kind: "attacker", badge: "迁仓" },
+  { from: "hub", to: "nil_park", usd: 0, label: "≈3283万 NIL + 0.05 ETH", t: "迁仓", src: "self", kind: "attacker", badge: "迁仓" },
+  { from: "hub", to: "blur_park", usd: 0, label: "≈4706万 BLUR + 0.05 ETH", t: "迁仓", src: "self", kind: "attacker", badge: "迁仓" },
+  { from: "hub", to: "re_park", usd: 0, label: "≈362万 RE + 0.05 ETH", t: "迁仓", src: "self", kind: "attacker", badge: "迁仓" },
+  { from: "hub", to: "fun_park", usd: 0, label: "≈5.81亿 FUN + 0.05 ETH", t: "迁仓", src: "self", kind: "attacker", badge: "迁仓" },
+  { from: "hub", to: "zkp_park", usd: 0, label: "≈995万 ZKP + 0.05 ETH", t: "迁仓", src: "self", kind: "attacker", badge: "迁仓" },
+  { from: "hub", to: "lsk_park", usd: 0, label: "≈926万 LSK + 0.05 ETH", t: "迁仓", src: "self", kind: "attacker", badge: "迁仓" },
+  { from: "hub", to: "innbc_park", usd: 0, label: "INNBC + 0.05 ETH", t: "迁仓", src: "self", kind: "attacker", badge: "迁仓" },
+  { from: "hub", to: "robo_park", usd: 0, label: "≈7839万 ROBO + 0.05 ETH", t: "迁仓", src: "self", kind: "attacker", badge: "迁仓" },
+  { from: "hub", to: "park19", usd: 34559920, label: "经 ENA 跳板 → Park19（跳板未上图）", t: "08:59", src: "self", kind: "attacker", badge: "停放" },
+  { from: "hub", to: "hop_feed", usd: 82000000, label: "LINK/WBTC/PEPE 等出货", t: "上午", src: "self", kind: "dex", badge: "换币" },
+  { from: "zama_park", to: "eth_consol_c209", usd: 0, label: "≈1104 ETH", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
+  { from: "soph_park", to: "eth_consol_c209", usd: 0, label: "≈932 ETH", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
+  { from: "re_park", to: "eth_consol_c209", usd: 0, label: "≈470 ETH", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
+  { from: "blur_park", to: "eth_consol_c209", usd: 0, label: "≈153 ETH", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
+  { from: "robo_park", to: "eth_consol_c209", usd: 0, label: "≈157 ETH", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
+  { from: "eth_park2", to: "eth_consol_c209", usd: 0, label: "≈1186.83 ETH", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
+  { from: "fun_park", to: "eth_consol_8d4b", usd: 0, label: "≈231 ETH 扫仓", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
+  { from: "nil_park", to: "eth_consol_8d4b", usd: 0, label: "≈861 ETH 扫仓", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
+  { from: "lsk_park", to: "eth_consol_8d4b", usd: 0, label: "≈1018 ETH 扫仓", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
+  { from: "zkp_park", to: "eth_consol_8d4b", usd: 0, label: "≈167 ETH 扫仓", t: "扫仓", src: "self", kind: "attacker", badge: "扫仓" },
+];
+const LAYERS = [
+  { key: "binance", title: "币安钱包", story: "7702 扫空 + 多链自签" },
+  { key: "l0", title: "主接收", story: "hub / BTC / Tron · hub 近空" },
+  { key: "l1", title: "拆分换币", story: "拆 USDT · 停 ETH · 剥 BTC" },
+  { key: "l2", title: "新暂存/归集", story: "自 Hub 暂存 · 跳板归集" },
+  { key: "out", title: "冻结去向", story: "拉黑路径 / 续转" },
+];
 const LAYER_BARS = [
-  { label: "币安侧流出", value: 63, display: "约 $63 亿", meta: "官方影响约数" },
-  { label: "链上冻结", value: 30, display: "约 $30 亿", meta: "冻结≠追回" },
-  { label: "官方拨备", value: 63.4, display: ">$63.4 亿", meta: "认赔≠追回" }
+  { label: "币安 → 主接收", value: 54.8, display: "约 $54.8 亿" },
+  { label: "主接收 → 拆分", value: 31.2, display: "约 $31.2 亿" },
+  { label: "进入冻结", value: 2.4, display: "约 $2.4 亿" },
+  { label: "新暂存+归集", value: 1.16, display: "~5.15 万 ETH", meta: "归集阶段" },
 ];
-const OFFMAP = ["Aave 抵押", "更多小额跳板"];
-let chain = "all", hideCleared = true, play = true, enterRef = 0;
+
+function srcLabel(src) {
+  if (src === "self") return "自核";
+  if (src === "etherscan") return "Etherscan";
+  return "线索";
+}
+function usdYi(n) {
+  return "$" + (n / 1e8).toFixed(n >= 1e9 ? 1 : 2) + " 亿";
+}
+function bezierPoint(u, x0, y0, my, x1, y1) {
+  const x = Math.pow(1 - u, 3) * x0 + 3 * Math.pow(1 - u, 2) * u * x0 + 3 * (1 - u) * Math.pow(u, 2) * x1 + Math.pow(u, 3) * x1;
+  const y = Math.pow(1 - u, 3) * y0 + 3 * Math.pow(1 - u, 2) * u * my + 3 * (1 - u) * Math.pow(u, 2) * my + Math.pow(u, 3) * y1;
+  return { x, y };
+}
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+
+let chain = "all";
+let hideCleared = true;
+let selected = "hub";
+let play = true;
+let tRef = 0;
+let enterRef = 0;
+let raf = 0;
 const canvas = document.getElementById("map");
-function drawFrame() { /* simplified */ }
-function updateOffmap() { document.getElementById("offmap").textContent = "未上图：" + OFFMAP.join(" · "); }
-function renderDetail() {}
-function bindSeg(id, onPick) {}
-bindSeg("chainSeg", (v) => { chain = v; });
-bindSeg("clearedSeg", (v) => { hideCleared = v === "hide"; });
+const detailEl = document.getElementById("detail");
+
+function filtered() {
+  const nodes = NODES.filter((n) => (chain === "all" || n.chain === chain) && !(hideCleared && n.cleared));
+  const ids = new Set(nodes.map((n) => n.id));
+  const edges = EDGES.filter((e) => ids.has(e.from) && ids.has(e.to));
+  return { nodes, edges };
+}
+
+function layoutOf(nodes) {
+  const W = 1260, H = 1420;
+  const rowY = [100, 400, 700, 1000, 1280];
+  const leftGutter = 100, rightPad = 60;
+  const pos = {};
+  LAYERS.forEach((L, li) => {
+    const col = nodes.filter((n) => n.layer === L.key);
+    const span = W - leftGutter - rightPad;
+    const split = L.key === "l2" && col.length > 8;
+    col.forEach((n, i) => {
+      const x = leftGutter + (i + 1) * span / (col.length + 1);
+      const y = split ? rowY[li] + (i % 2 ? 36 : -36) : rowY[li];
+      pos[n.id] = { x, y, n };
+    });
+  });
+  return { W, H, pos, rowY };
+}
+
+function drawFrame() {
+  const { nodes, edges } = filtered();
+  const layout = layoutOf(nodes);
+  const ctx = canvas.getContext("2d");
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = layout.W * dpr;
+  canvas.height = layout.H * dpr;
+  canvas.style.width = "100%";
+  canvas.style.minWidth = "1260px";
+  canvas.style.height = "auto";
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const maxUsd = Math.max(...edges.map((e) => e.usd), 1);
+
+  const loop = () => {
+    tRef += play ? 0.014 : 0;
+    enterRef = Math.min(1, enterRef + 0.018);
+    const t = tRef, enter = enterRef;
+    ctx.clearRect(0, 0, layout.W, layout.H);
+
+    // layer bands + left rail labels (outside node field)
+    LAYERS.forEach((L, i) => {
+      const ry = layout.rowY[i];
+      const top = i === 0 ? 20 : (layout.rowY[i - 1] + ry) / 2;
+      const bot = i === LAYERS.length - 1 ? layout.H - 20 : (ry + layout.rowY[i + 1]) / 2;
+      ctx.fillStyle = i % 2 === 0 ? THEME.bandFill : "rgba(255,255,255,0.015)";
+      ctx.fillRect(0, top, layout.W, bot - top);
+      ctx.fillStyle = "rgba(12,16,23,0.92)";
+      ctx.fillRect(0, top, 90, bot - top);
+      ctx.fillStyle = THEME.text.secondary;
+      ctx.font = "600 12px " + THEME.font;
+      ctx.textAlign = "left";
+      ctx.fillText(L.title, 10, ry - 6);
+      ctx.font = "400 10px " + THEME.font;
+      ctx.fillStyle = THEME.text.tertiary;
+      const story = L.story.length > 14 ? L.story.slice(0, 14) + "…" : L.story;
+      ctx.fillText(story, 10, ry + 10);
+    });
+
+    edges.forEach((e, ei) => {
+      const a = layout.pos[e.from], b = layout.pos[e.to];
+      if (!a || !b) return;
+      const related = !selected || selected === e.from || selected === e.to;
+      const style = EDGE_STYLE[e.kind];
+      const edgeEnter = Math.max(0, Math.min(1, (enter - ei * 0.03) / 0.35));
+      const w = (1.1 + (Math.log10(e.usd) / Math.log10(maxUsd)) * 5.5) * (related ? 1 : 0.3) * edgeEnter;
+      const x0 = a.x, x1 = b.x;
+      const y0 = a.y + 40, y1 = b.y - 40;
+      const my = (y0 + y1) / 2;
+      ctx.beginPath();
+      ctx.moveTo(x0, y0);
+      ctx.bezierCurveTo(x0, my, x1, my, x1, y1);
+      ctx.strokeStyle = related ? style.stroke : THEME.border.subtle;
+      ctx.globalAlpha = (related ? style.alpha : 0.25) * edgeEnter;
+      ctx.lineWidth = related ? w : Math.max(1, w * 0.4);
+      ctx.setLineDash(style.dash || []);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.globalAlpha = 1;
+
+      // badges only when a node is selected — keeps mid-map readable
+      if (e.badge && selected && related && edgeEnter > 0.7) {
+        const mid = bezierPoint(0.5, x0, y0, my, x1, y1);
+        ctx.font = "600 11px " + THEME.font;
+        const tw = ctx.measureText(e.badge).width;
+        const bw = tw + 10, bh = 18;
+        const bx = mid.x - bw / 2, by = mid.y - 22;
+        ctx.fillStyle = style.stroke;
+        roundRect(ctx, bx, by, bw, bh, 4);
+        ctx.fill();
+        ctx.fillStyle = "#0c1017";
+        ctx.textAlign = "center";
+        ctx.fillText(e.badge, mid.x, by + 13);
+      }
+
+      if (play && selected && related && edgeEnter > 0.5) {
+        const frozen = e.kind === "frozen";
+        const count = frozen ? 1 : 2;
+        for (let p = 0; p < count; p++) {
+          const u = frozen ? 0.08 + 0.04 * Math.sin(t * 1.2) : (t * (e.usd > 5e8 ? 0.22 : 0.4) + p / count) % 1;
+          const pt = bezierPoint(u, x0, y0, my, x1, y1);
+          ctx.beginPath();
+          ctx.arc(pt.x, pt.y, frozen ? 2.4 : 3.2, 0, Math.PI * 2);
+          ctx.fillStyle = style.particle;
+          ctx.globalAlpha = frozen ? 0.35 + 0.2 * Math.sin(t * 2) : 0.95;
+          ctx.fill();
+          ctx.globalAlpha = 1;
+        }
+      }
+    });
+
+    nodes.forEach((n, ni) => {
+      const p = layout.pos[n.id];
+      if (!p) return;
+      const on = !selected || selected === n.id;
+      const related = !selected || selected === n.id || edges.some((e) =>
+        (e.from === selected && e.to === n.id) || (e.to === selected && e.from === n.id));
+      const nodeEnter = Math.max(0, Math.min(1, (enter - 0.15 - ni * 0.02) / 0.4));
+      const bw = 180, bh = 62;
+      const pulse = selected === n.id ? 1 + 0.015 * Math.sin(t * 3) : 1;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.scale(pulse * (0.94 + 0.06 * nodeEnter), pulse * (0.94 + 0.06 * nodeEnter));
+      ctx.globalAlpha = nodeEnter * (related ? 1 : 0.35);
+      ctx.fillStyle = THEME.bg.elevated;
+      ctx.strokeStyle = on
+        ? (n.frozen ? EDGE_STYLE.frozen.stroke : n.layer === "binance" ? EDGE_STYLE.binance.stroke : n.layer === "l2" ? EDGE_STYLE.attacker.stroke : THEME.dataviz[0])
+        : THEME.border.default;
+      ctx.lineWidth = on ? 2.2 : 1;
+      roundRect(ctx, -bw / 2, -bh / 2, bw, bh, 10);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = THEME.text.primary;
+      ctx.font = "600 13px " + THEME.font;
+      ctx.textAlign = "center";
+      ctx.fillText(n.label, 0, -7);
+      ctx.font = "400 12px " + THEME.font;
+      ctx.fillStyle = THEME.text.secondary;
+      ctx.fillText(n.value || n.venue || n.chain, 0, 11);
+      if (n.tag) {
+        ctx.font = "600 10px " + THEME.font;
+        const tw = ctx.measureText(n.tag).width;
+        ctx.fillStyle = n.frozen ? EDGE_STYLE.frozen.stroke : n.layer === "l2" ? EDGE_STYLE.attacker.stroke : EDGE_STYLE.binance.stroke;
+        roundRect(ctx, bw / 2 - tw - 12, -bh / 2 - 2, tw + 8, 13, 3);
+        ctx.fill();
+        ctx.fillStyle = "#0c1017";
+        ctx.fillText(n.tag, bw / 2 - tw / 2 - 8, -bh / 2 + 8);
+      }
+      ctx.restore();
+    });
+
+    raf = requestAnimationFrame(loop);
+  };
+  cancelAnimationFrame(raf);
+  loop();
+}
+
+function hit(clientX, clientY) {
+  const { nodes } = filtered();
+  const layout = layoutOf(nodes);
+  const r = canvas.getBoundingClientRect();
+  const x = ((clientX - r.left) / r.width) * layout.W;
+  const y = ((clientY - r.top) / r.height) * layout.H;
+  let hitId = null;
+  for (const n of nodes) {
+    const p = layout.pos[n.id];
+    if (!p) continue;
+    if (Math.abs(x - p.x) < 90 && Math.abs(y - p.y) < 31) hitId = n.id;
+  }
+  selected = hitId === selected ? null : hitId;
+  renderDetail();
+}
+
+function renderDetail() {
+  const selNode = NODES.find((n) => n.id === selected) || null;
+  if (!selNode) { detailEl.hidden = true; detailEl.innerHTML = ""; return; }
+  const selEdges = EDGES.filter((e) => e.from === selected || e.to === selected);
+  const rows = selEdges.map((e) => {
+    const out = e.from === selected;
+    const other = NODES.find((n) => n.id === (out ? e.to : e.from));
+    return `<tr><td>${out ? "出" : "入"}</td><td>${other?.label || ""}</td><td>${e.label}</td><td>${e.badge || e.kind}</td><td>${e.t}</td><td>${srcLabel(e.src)}</td></tr>`;
+  }).join("");
+  detailEl.hidden = false;
+  detailEl.innerHTML =
+    `<h3 style="margin:0 0 8px;font-size:.92rem">选中 · ${selNode.label}</h3>` +
+    `<div class="props">` +
+    `<div class="prop"><div class="k">链</div><div class="v">${selNode.chain}</div></div>` +
+    (selNode.venue ? `<div class="prop"><div class="k">场所</div><div class="v">${selNode.venue}</div></div>` : "") +
+    (selNode.addr ? `<div class="prop"><div class="k">地址</div><div class="v"><code>${selNode.addr}</code></div></div>` : "") +
+    `<div class="prop"><div class="k">手法标签</div><div class="v">${selNode.tag || "—"}</div></div>` +
+    `<div class="prop"><div class="k">说明</div><div class="v">${selNode.note}</div></div>` +
+    `<div class="prop"><div class="k">持仓 / 状态</div><div class="v">${selNode.value || "—"}</div></div>` +
+    `<div class="prop"><div class="k">冻结</div><div class="v"><span class="badge ${selNode.frozen ? "danger" : "neutral"}">${selNode.frozen ? "稳定币已拉黑/冻结路径（拉黑≠已追回）" : "未见稳定币黑名单/冻结路径"}</span></div></div>` +
+    `</div>` +
+    `<div style="overflow-x:auto"><table><thead><tr><th>方向</th><th>对端</th><th>金额</th><th>手法</th><th>时间</th><th>核验</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+function bindSeg(id, onPick) {
+  const el = document.getElementById(id);
+  el.addEventListener("click", (ev) => {
+    const b = ev.target.closest("button");
+    if (!b) return;
+    el.querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b));
+    onPick(b.dataset.v);
+  });
+}
+bindSeg("chainSeg", (v) => { chain = v; enterRef = 0; drawFrame(); updateOffmap(); });
+bindSeg("clearedSeg", (v) => { hideCleared = v === "hide"; enterRef = 0; drawFrame(); updateOffmap(); });
 bindSeg("playSeg", (v) => { play = v === "on"; });
-canvas.addEventListener("click", (e) => {});
+
+canvas.addEventListener("click", (e) => hit(e.clientX, e.clientY));
+
 (function renderBars() {
   const max = Math.max(...LAYER_BARS.map((b) => b.value));
   document.getElementById("bars").innerHTML = LAYER_BARS.map((b, i) =>
@@ -236,10 +528,24 @@ canvas.addEventListener("click", (e) => {});
     `<div class="bar-val">${b.display}${b.meta ? " · " + b.meta : ""}</div></div>`
   ).join("");
 })();
+
 (function renderTop() {
   const tb = document.querySelector("#topEdges tbody");
-  tb.innerHTML = "";
+  tb.innerHTML = EDGES.slice(0, 8).map((e) => {
+    const a = NODES.find((n) => n.id === e.from);
+    const b = NODES.find((n) => n.id === e.to);
+    return `<tr><td>${a?.label || e.from}</td><td>${b?.label || e.to}</td><td>${usdYi(e.usd)}</td><td>${e.badge || e.kind}</td><td>${e.label}</td><td>${srcLabel(e.src)}</td></tr>`;
+  }).join("");
 })();
+
+function updateOffmap() {
+  const base = "未上图：" + OFFMAP.join(" · ");
+  const hidden = hideCleared ? NODES.filter((n) => n.cleared) : [];
+  const extra = hidden.length
+    ? "；已清仓收起：" + hidden.map((n) => n.label.replace(/停放·新址$/, "").replace(/停放·/, "")).join("·") + "（ETH已扫入C209）"
+    : "";
+  document.getElementById("offmap").textContent = base + extra;
+}
 updateOffmap();
 renderDetail();
 drawFrame();
